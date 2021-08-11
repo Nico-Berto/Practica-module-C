@@ -52,19 +52,23 @@ int mazoComplete(int mazo[])
     return false;
 }
 
-int main()
+int partida()
 {
-    int valoresBlackJack[13] = {2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10, 11}; /*Cartas 2 3 4 5 6 7 8 9 10
+     int valoresBlackJack[13] = {2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10, 11}; /*Cartas 2 3 4 5 6 7 8 9 10
                                                                 J Q K*/
     time_t tiempo;
     int i = 0, index = 0;
     int sumJugador1 = 0, sumJugador2 = 0;
     int mazo[CARTAS] = {0};
-    char respuestaJ1, respuestaJ2;
+    char respuestaJ1, respuestaJ2, respuesta;
     char cont;
     int indexMazo;
+
+    printf("\n\n\tBIENVENIDOS AL BLACKJACK\n\n");
+
     srand((unsigned)time(&tiempo)); /*semilla para numero aleatorio*/
     /*Creo el mazo de cartas*/
+
     do
     {
         indexMazo = rand() % CARTAS;
@@ -75,14 +79,14 @@ int main()
         }
         if (i == 12)
             i = 0;
-
-    } while (mazoComplete(mazo)); // Hago esto hasta que el array mazo se llene con valores de las cartas
-
+    } while (mazoComplete(mazo));
+    // Hago esto hasta que el array mazo se llene con valores de las cartas
+/*
     for (int i = 0; i < CARTAS; i++)
     {
         printf("%d\n", mazo[i]);
     }
-
+*/
     /*Reparto de manera alternada entre los dos jugadores empezando por el primero*/
 
     for (index = 0; index < 2; index++)
@@ -194,4 +198,21 @@ int main()
         }
 
     } while ((sumJugador1 < BLACKJACK && sumJugador2 < BLACKJACK));
+    return 0;
+}
+
+void main()
+{
+    char  respuesta;
+    partida();
+    do
+    {
+        do
+        {
+            printf("\nJUGADORES, DESEAN UNA NUEVA PARTIDA? S/n\n");
+            scanf(" %c", &respuesta);
+        } while (!(respuesta == 'S' || respuesta == 'n'));
+        if(respuesta == 'S')     partida();
+        else exit(-1);       
+    } while (respuesta == 'S');
 }
