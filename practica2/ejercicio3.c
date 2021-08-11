@@ -60,11 +60,10 @@ int main()
     int i = 0, index = 0;
     int sumJugador1 = 0, sumJugador2 = 0;
     int mazo[CARTAS] = {0};
-    char respuesta;
-
+    char respuestaJ1, respuestaJ2;
+    char cont;
     int indexMazo;
     srand((unsigned)time(&tiempo)); /*semilla para numero aleatorio*/
-
     /*Creo el mazo de cartas*/
     do
     {
@@ -88,8 +87,8 @@ int main()
 
     for (index = 0; index < 2; index++)
     {
-        printf("\n Jugador 1 le toco la carta: %d ", mazo[2 * index]);     /*Le toca la carta 0 y 2 del mazo*/
-        printf("\n Jugador 2 le toco la carta: %d ", mazo[2 * index + 1]); /*Le toca la carta 1 y 3 del mazo*/
+        printf("\nJugador 1 le toco la carta: %d", mazo[2 * index]);     /*Le toca la carta 0 y 2 del mazo*/
+        printf("\nJugador 2 le toco la carta: %d", mazo[2 * index + 1]); /*Le toca la carta 1 y 3 del mazo*/
         sumJugador1 += mazo[2 * index];
         sumJugador2 += mazo[2 * index + 1];
     }
@@ -113,73 +112,86 @@ int main()
     }
 
     /*Si nadie hizo BLACKJACK, continúo el juego*/
-
-    printf("\nJugador 1, ¿Desea otra carta? S/n\n");
-    scanf(" %c", &respuesta);
-    if (respuesta == 'S')
+    do
     {
-        index++; /*Este index lo use para repartirar las cartas y ya quedo con el ultimo valor del for*/
-        sumJugador1 += mazo[2 * index];
-        printf("\nJugador 1: su proxima carta es: %d y acumula una suma de: %d\n", mazo[2 * index], sumJugador1);
-
-        if (sumJugador1 == BLACKJACK)
+        do
         {
-            printf("\nFelicitaciones jugador 1, ¡Has ganado!\n");
-            return 0;
+            printf("\nJugador 1, ¿Desea otra carta? S/n\n");
+            scanf(" %c", &respuestaJ1);
+        } while (!(respuestaJ1 == 'S' || respuestaJ1 == 'n'));
+
+        if (respuestaJ1 == 'S')
+        {
+            index++; /*Este index lo use para repartirar las cartas y ya quedo con el ultimo valor del for*/
+            sumJugador1 += mazo[2 * index];
+            printf("\nJugador 1: su proxima carta es: %d y acumula una suma de: %d\n", mazo[2 * index], sumJugador1);
+
+            if (sumJugador1 == BLACKJACK)
+            {
+                printf("\nFelicitaciones jugador 1, ¡Has ganado!\n");
+                return 0;
+            }
+
+            if (sumJugador1 > BLACKJACK)
+            {
+                printf("\nLo siento jugador 1, ¡Has perdido!, felicitaciones jugador 2, ¡Has ganado!\n");
+                return 0;
+            }
+        }
+        else if (respuestaJ1 == 'n')
+        {
+            printf("\nJugador 1 se ha plantado con: %d\n", sumJugador1);
+        }
+        do
+        {
+            printf("\nJugador 2, ¿Desea otra carta? S/n\n");
+            scanf(" %c", &respuestaJ2);
+        } while (!(respuestaJ2 == 'S' || respuestaJ2 == 'n'));
+        if (respuestaJ2 == 'S')
+        {
+            index++;
+            sumJugador2 += mazo[2 * index + 1];
+            printf("\nJugador 2: su proxima carta es: %d y acumula una suma de: %d\n", mazo[2 * index + 1], sumJugador2);
+
+            if (sumJugador2 == BLACKJACK)
+            {
+                printf("\nFelicitaciones jugador 2, ¡Has ganado!\n");
+                return 0;
+            }
+            if (sumJugador2 > BLACKJACK)
+            {
+                printf("\nLo siento jugador 2, ¡Has perdido! felicitaciones jugador 1, ¡Has ganado!\n");
+                return 0;
+            }
+        }
+        else if (respuestaJ2 == 'n')
+        {
+            printf("\nJugador 2 se ha plantado con: %d\n", sumJugador2);
         }
 
-        if (sumJugador1 > BLACKJACK)
+        if (respuestaJ1 == 'n' && respuestaJ2 == 'n') /*Situacion en la que ambos se plantaron antes de superar 
+        BLACKJACK*/
         {
-            printf("\nLo siento jugador 1, ¡Has perdido!\n");
-            printf("\nFelicitaciones jugador 2, ¡Has ganado!\n");
-            return 0;
+            if (sumJugador1 > sumJugador2)
+            {
+                printf("\nHa ganado el jugador 1 por mayor suma: %d\n", sumJugador1);
+                printf("\nHa perdido el jugador 2 por menor suma: %d\n", sumJugador2);
+                return 0;
+            }
+
+            if (sumJugador1 < sumJugador2)
+            {
+                printf("\nHa ganado el jugador 2 por mayor suma: %d\n", sumJugador2);
+                printf("\nHa perdido el jugador 1 por menor suma: %d\n", sumJugador1);
+                return 0;
+            }
+
+            if (sumJugador1 == sumJugador2)
+            {
+                printf("\nHubo empate, ambos jugadores sumaron: %d\n", sumJugador1);
+                return 0;
+            }
         }
-    }
-    else if (respuesta == 'n')
-    {
-        printf("\nJugador 1 se ha plantado con: %d\n", sumJugador1);
-    }
 
-    printf("\nJugador 2, ¿Desea otra carta? S/n\n");
-    scanf(" %c", &respuesta);
-
-    if (respuesta == 'S')
-    {
-        index++;
-        sumJugador2 += mazo[2 * index + 1];
-        printf("\nJugador 2: su proxima carta es: %d y acumula una suma de: %d\n", mazo[2 * index + 1], sumJugador2);
-
-        if (sumJugador2 == BLACKJACK)
-        {
-            printf("\nFelicitaciones jugador 2, ¡Has ganado!\n");
-            return 0;
-        }
-        if (sumJugador2 > BLACKJACK)
-        {
-            printf("\nLo siento jugador 2, ¡Has perdido!\n");
-            printf("\nFelicitaciones jugador 1, ¡Has ganado!\n");
-            return 0;
-        }
-    }
-    else if (respuesta == 'n')
-    {
-        printf("\nJugador 2 se ha plantado con: %d\n", sumJugador2);
-    }
-
-    if(sumJugador1 > sumJugador2){
-        printf("\nHa ganado el jugador 1 por mayor suma: %d\n",sumJugador1);
-        printf("\nHa perdido el jugador 2 por menor suma: %d\n",sumJugador2);
-        return 0;
-    } 
-
-        if(sumJugador1 < sumJugador2){
-        printf("\nHa ganado el jugador 2 por mayor suma: %d\n",sumJugador2);
-        printf("\nHa perdido el jugador 1 por menor suma: %d\n",sumJugador1);
-        return 0;
-    } 
-
-        if(sumJugador1 == sumJugador2){
-        printf("\nHubo empate, ambos jugadores sumaron: %d\n",sumJugador1);
-        return 0;
-    } 
+    } while ((sumJugador1 < BLACKJACK && sumJugador2 < BLACKJACK));
 }
