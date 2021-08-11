@@ -1,0 +1,107 @@
+/*Simulo de manera aleatoria las cartas que le tocaria a cada jugador*/
+
+    do
+    {
+        i++;
+        /*Una carta no podría estar repetido mas de 4 veces*/
+        cartasJugador1[i] = mazo[rand() % CARTAS];
+        sumJugador1 += cartasJugador1[i];
+
+    } while (sumJugador1 < BLACKJACK);
+    i = -1;
+
+    do
+    {
+        i++;
+        cartasJugador2[i] = mazo[rand() % CARTAS];
+        sumJugador2 += cartasJugador2[i];
+        printf("\n%d\n", cartasJugador2[i]);
+
+    } while (sumJugador2 < BLACKJACK);
+    printf("\n\nBienvenido al blackJack\n\n");
+
+    sumJugador1 = cartasJugador1[0] + cartasJugador1[1];
+    if (sumJugador1 == BLACKJACK - 1)
+        sumJugador1 = BLACKJACK - 10;
+    sumJugador2 = cartasJugador2[0] + cartasJugador2[1];
+    if (sumJugador2 == BLACKJACK - 1)
+        sumJugador2 = BLACKJACK - 10;
+
+    printf("\n Jugador 1 le tocan las cartas: %d y %d\t suma total:%d", cartasJugador1[0], cartasJugador1[1], sumJugador1);
+    printf("\n Jugador 2 le tocan las cartas: %d y %d\t suma total:%d", cartasJugador2[0], cartasJugador2[1], sumJugador2);
+
+    if (sumJugador1 == BLACKJACK)
+    {
+        printf("\nFelicitaciones jugador 1, ¡Has ganado!");
+        return 0;
+    }
+
+    if (sumJugador2 == BLACKJACK)
+    {
+        printf("\nFelicitaciones jugador 2, ¡Has ganado!");
+        return 0;
+    }
+
+    printf("\nJugador 1, ¿Desea otra carta? S/n");
+    scanf("%c", &respuesta);
+    if (respuesta == 'S')
+    {
+        sumJugador1 += cartasJugador1[2];
+        printf("\nSu proxima carta es: %d y acumula una suma de: %d\n", cartasJugador1[2], sumJugador1);
+
+        if (sumJugador1 == BLACKJACK)
+        {
+            printf("\nFelicitaciones jugador 1, ¡Has ganado!");
+            return 0;
+        }
+    }
+
+    printf("\nJugador 2, ¿Desea otra carta? S/n");
+    scanf("%c", &respuesta);
+
+    if (respuesta == 'S')
+    {
+        sumJugador2 += cartasJugador2[2];
+        printf("\nSu proxima carta es: %d y acumula una suma de: %d\n", cartasJugador1[2], sumJugador1);
+
+        if (sumJugador1 == BLACKJACK)
+        {
+            printf("\nFelicitaciones jugador 1, ¡Has ganado!");
+            return 0;
+        }
+    }
+
+    /*
+    while (respuesta != 'S' || respuesta != 'n')
+    {
+        printf("\nJugador 1, ¿Desea otra carta? S/n");
+        scanf("%c", &respuesta);
+
+        if (respuesta == 'S')
+        {
+            printf("\nSu proxima carta es: %d\n", cartasJugador1[2]);
+            sumJugador1 += cartasJugador1[2];
+            continue;
+            if (sumJugador1 == BLACKJACK)
+            {
+                printf("\nFelicitaciones jugador 1, ¡Has ganado!");
+                return 0;
+            }
+        }
+    }
+    while (respuesta != 'S' || respuesta != 'n')
+    {
+        printf("\nJugador 2, ¿Desea otra carta? S/n");
+        scanf("%c", &respuesta);
+        if (respuesta == 'S')
+        {
+            printf("\nSu proxima carta es: %d\n", cartasJugador2[2]);
+            sumJugador1 += cartasJugador1[2];
+            if (sumJugador2 == BLACKJACK)
+            {
+                printf("\nFelicitaciones jugador 2, ¡Has ganado!");
+                return 0;
+            }
+        }
+    }*/
+}
