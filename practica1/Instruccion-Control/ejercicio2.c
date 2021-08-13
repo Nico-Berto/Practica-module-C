@@ -23,9 +23,9 @@ void ejercicio2(void){
 
  float resultado = dineroDepositado * potencia(base, anios, dineroDepositado);
  printf("\nDespues de 30 años,al depositar 100 USD cada año se obtiene un total : %.2f\n", resultado);
-
+printf("\n\n-------------------------------------------------\n\n");
 float nuevoDeposito = DINERO_FINAL / (resultado/dineroDepositado);
- printf("\nSe debe depositar una cantidad inicial de %.2f USD para al cabo de\n30 años acumular 100 000 USD\n\n",nuevoDeposito);
+ printf("\nSe debe depositar una cantidad inicial de %.2f USD para al cabo de 30 años acumular 100 000 USD\n\n",nuevoDeposito);
  
 }
 

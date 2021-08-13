@@ -3,42 +3,20 @@
 #include <time.h>
 /*EL JUEGO DE LAS 21*/
 
-#define CARTAS 52
-#define BLACKJACK 21
-#define PRIMER_REPARTO 4
+#define CARTAS              52
+#define BLACKJACK           21
+#define PRIMER_REPARTO      4
+
+#define J   10
+#define Q   10
+#define K   10
+#define AS  11
 
 #define true 1
 #define false 0
-/*
-typedef struct {
-    int valor;
-    char* palo;
-    carta* siguiente;
-}carta;
 
-
-carta* top = NULL; // final de la lista
-
-void push(int valor){
-    carta* temp = (carta*)malloc(sizeof(carta)); // Creo un puntero dinamico a carta
-    temp->valor = valor;
-    temp->siguiente = top;
-    top = temp;
-}
-
-void pop (){
-    carta* temp;
-    if (top == NULL) return; // lista vacia
-    temp = top; // apunto con el puntero al ultimo
-    top = top->siguiente;
-    free(temp);
-}
-
-int isEmpty(){
-    if(top == NULL) return true;
-    else            return false;
-}
-*/
+int mazoComplete(int mazo[]);
+int partida();
 
 int mazoComplete(int mazo[])
 {
@@ -54,7 +32,7 @@ int mazoComplete(int mazo[])
 
 int partida()
 {
-     int valoresBlackJack[13] = {2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10, 11}; /*Cartas 2 3 4 5 6 7 8 9 10
+     int valoresBlackJack[13] = {2, 3, 4, 5, 6, 7, 8, 9, 10, J, Q, K, AS}; /*Cartas 2 3 4 5 6 7 8 9 10
                                                                 J Q K*/
     time_t tiempo;
     int i = 0, index = 0;

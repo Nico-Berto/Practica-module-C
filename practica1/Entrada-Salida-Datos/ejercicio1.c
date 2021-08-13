@@ -42,25 +42,34 @@ void ejercicio2Item2(void);
 void ejercicio2Item3(void);
 
 int main(void) {
-	printf("\nActividad A:\n");
+	printf("\nActividad A:\n\n");
 	itemA();
-	printf("\nActividad B:\n");
+	printf("\n-------------------------------------------------\n\n");
+	printf("\n\nActividad B:\n\n");
 	itemB();
-	printf("\nActividad C:\n");
+	printf("\n-------------------------------------------------\n\n");
+	printf("\n\nActividad C:\n\n");
 	itemC();
-	printf("\nActividad D:\n");
+	printf("\n-------------------------------------------------\n\n");
+	printf("\n\nActividad D:\n\n");
 	itemD();
-	printf("\nActividad E:\n");
+	printf("\n-------------------------------------------------\n\n");
+	printf("\n\nActividad E:\n\n");
 	itemE();
-	printf("\nActividad F:\n");
+	printf("\n-------------------------------------------------\n\n");
+	printf("\n\nActividad F:\n\n");
 	itemF();
-	printf("\nActividad G:\n");
+	printf("\n-------------------------------------------------\n\n");
+	printf("\n\nActividad G:\n\n");
 	itemG();
-	printf("\nActividad H:\n");
+	printf("\n-------------------------------------------------\n\n");
+	printf("\n\nActividad H:\n");
 	itemH();
-	printf("\nActividad I:\n");
+	printf("\n-------------------------------------------------\n\n");
+	printf("\n\nActividad I:\n\n");
 	itemI();
-	printf("\nActividad J:\n");
+	printf("\n-------------------------------------------------\n\n");
+	printf("\n\nActividad J:\n\n");
 	itemJ();
 
 	return 0;
@@ -71,10 +80,10 @@ int main(void) {
  * cada cantidad en coma flotante se presenta en notación exponencial con un total de al menos 14 caracteres y no más de 8 cifras decimales.*/
 
 void itemA (void) {
-	printf("Valor de i: %04d ",i);
-	printf ("Valor de j:%04d ",j);
-	printf ("Valor de x:%14.8e ",x);
-	printf ("Valor de dx:%14.8e ",dx);
+	printf("Valor de i: %04d\n",i);
+	printf ("Valor de j:%04d\n",j);
+	printf ("Valor de x:%14.8e\n",x);
+	printf ("Valor de dx:%14.8e\n",dx);
 }
 
 void itemB (void) {
@@ -148,7 +157,7 @@ void itemG(void) {
 void itemH(void) {
 	printf ("Valor de x:%+011.4f",x);
 	printf ("\tValor de j:%+05d",j);
-	printf ("\tValor de u:%+5u",u);
+	printf ("\tValor de u:%5u",u);
 }
  /*Repetir F, rellenando el campo de cada entidad entera con ceros.*/
 

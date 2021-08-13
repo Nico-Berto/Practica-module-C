@@ -1,5 +1,7 @@
 #include <stdio.h>
 
+#define MAX_LENGTH  100
+
 void ejercicio2Item1(void);
 void ejercicio2Item2(void);
 void ejercicio2Item3(void);
@@ -8,12 +10,13 @@ void main()
 {
     printf("\n\nEJERCICIO 2\n\n");
 
-    printf("\n\nActividad 1 del ejercicio 2:\n");
+    printf("\n\nActividad 1 del ejercicio 2:\n\n");
     ejercicio2Item1();
-    printf("\n\nActividad 2 del ejercicio 2:\n");
+    printf("\n-------------------------------------------------\n\n");
+    printf("\n\nActividad 2 del ejercicio 2:\n\n");
     ejercicio2Item2();
-
-    printf("\nActividad 3 del ejercicio 2:\n");
+    printf("\n-------------------------------------------------\n\n");
+    printf("\nActividad 3 del ejercicio 2:\n\n");
     ejercicio2Item3();
 }
 /*Escribir las instrucciones scanf o printf necesarias para cada uno de los siguientes puntos:
@@ -29,9 +32,9 @@ Asignar el nombre a una cadena de caracteres llamada nombre.
 void ejercicio2Item1(void)
 {
 
-    char nombre[30];
+    char nombre[MAX_LENGTH];
     printf("Por favor, ingrese su nombre:\n");
-    scanf("%s", nombre);
+    fgets(nombre,MAX_LENGTH,stdin);
 
     printf("Su nombre es: %s", nombre);
 }

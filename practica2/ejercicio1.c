@@ -14,6 +14,8 @@ void bubbleSort(int sizeA, float array[], int orderType)
     {
 
     case 1: /*Menor a mayor en valor absoluto*/
+        printf("\n\n-------------------------------------------------\n\n");
+        printf("Ordenamiento de menor a mayor en valor absoluto\n\n");
 
         for (i = 1; i < sizeA; i++)
         {
@@ -30,6 +32,8 @@ void bubbleSort(int sizeA, float array[], int orderType)
         break;
 
     case 2: /*Menor a mayor algebraicamente*/
+        printf("\n\n-------------------------------------------------\n\n");
+        printf("Ordenamiento de menor a mayor algebraicamente\n\n");
         for (i = 1; i < sizeA; i++)
         {
             for (j = 0; j < sizeA - i; j++)
@@ -45,6 +49,8 @@ void bubbleSort(int sizeA, float array[], int orderType)
         break;
 
     case 3: /*Mayor a menor en valor absoluto*/
+        printf("\n\n-------------------------------------------------\n\n");
+        printf("Ordenamiento de mayor a menor en valor absoluto\n\n");
         for (i = 1; i < sizeA; i++)
         {
             for (j = 0; j < sizeA - i; j++)
@@ -60,6 +66,8 @@ void bubbleSort(int sizeA, float array[], int orderType)
         break;
 
     case 4: /*Mayor a menor algebraicamente*/
+        printf("\n\n-------------------------------------------------\n\n");
+        printf("Ordenamiento de mayor a menor algebraicamente\n\n");
         for (i = 1; i < sizeA; i++)
         {
             for (j = 0; j < sizeA - i; j++)
@@ -80,7 +88,7 @@ void mostrarLista(float array[], int sizeA)
 {
     int i;
     for (i = 0; i < sizeA; i++)
-    printf("%f\t", array[i]);
+        printf("%f\t", array[i]);
     printf("\n");
 }
 
@@ -92,14 +100,14 @@ void main(void)
 
     printf("Array de testo:\n");
     mostrarLista(array, sizeArray);
-do{
-    printf("\nSeleccione una opcion:\n 1.Ordenamiento de menor a mayor de acuerdo al valor absoluto\n");
-    printf("2.Ordenamiento de menor a mayor algebraicamente\n3. Ordenamiento de mayor a menor de acuerdo al valor absoluto\n");
-    printf("4.Ordenamiento de mayor a menor algebraicamente\n4. Presione 5 para salir..\n\n");
-    scanf("%d",&opc);
-    bubbleSort(sizeArray, array, opc);
-    mostrarLista(array, sizeArray);
+    do
+    {
+        printf("\nSeleccione una opcion:\n1.Ordenamiento de menor a mayor de acuerdo al valor absoluto\n");
+        printf("2.Ordenamiento de menor a mayor algebraicamente\n3. Ordenamiento de mayor a menor de acuerdo al valor absoluto\n");
+        printf("4.Ordenamiento de mayor a menor algebraicamente\n5. Presione 5 para salir..\n\n");
+        scanf("%d", &opc);
+        bubbleSort(sizeArray, array, opc);
+        mostrarLista(array, sizeArray);
 
-}while (opc!= 5);
-    
+    } while (opc != 5);
 }
