@@ -41,41 +41,4 @@ int main()
         cin >> resp;
 
     } while (resp != 'n');
-
-    /*
-    do
-    {
-        datos NuevoDato;
-        temperatura Temperatura(0);
-        humedad Humedad(0);
-        presion Presion(0);
-
-        cout << "Ingrese la frase" << endl;
-        cin >> line;
-        // Vector of string to save tokens
-        vector<string> tokens;
-
-        // stringstream class check1
-        stringstream check1(line);
-        string intermediate;
-        line.replace(line.begin(), line.end(), " ");
-
-        // Tokenizing w.r.t. space ' '
-        while (getline(check1, intermediate, ','))
-        {
-            tokens.push_back(intermediate);
-            NuevoDato.setId(1);
-            Temperatura((float)tokens[0]);
-        }
-
-        cout << tokens[0] << endl;
-        cout << tokens[1];
-        cout << "Nuevo dato? S/n" << endl;
-        cin >> resp;
-
-    } while (resp != 'n');
-*/
-    // Printing the token vector
-    //for(int i = 0; i < tokens.size(); i++)
-    //    cout << tokens[i];
 }
